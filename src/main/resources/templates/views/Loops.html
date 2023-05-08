@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Loop</title>
+</head>
+<body>
+
+<h2>Demo Foreach </h2><br/>
+<p>---------------------------------------------------------------------------------------------------------------------</p>
+<h3>Danh sách các loài hoa không đi kèm trạng thái: </h3>
+<div th:each="flower:${listFlowers}">
+    <li> [[${flower}]]</li>
+</div><br/>
+
+<p>---------------------------------------------------------------------------------------------------------------------</p>
+<h3>Danh sách loài hoa đi kèm trạng thái: </h3>
+<table border="1">
+    <tr>
+        <th>index</th>
+        <th>count</th>
+        <th>size</th>
+        <th>even</th>
+        <th>odd</th>
+        <th>first</th>
+        <th>last</th>
+        <th>Flower Name</th>
+    </tr>
+    <tr th:each="flower, state : ${listFlowers}">
+        <td th:text="${state.index}"></td>
+        <td th:text="${state.count}"></td>
+        <td th:text="${state.size}"></td>
+        <td th:text="${state.even}"></td>
+        <td th:text="${state.odd}"></td>
+        <td th:text="${state.first}"></td>
+        <td th:text="${state.last}"></td>
+        <td th:text="${flower}"> </td>
+    </tr>
+</table>
+
+</body>
+</html>

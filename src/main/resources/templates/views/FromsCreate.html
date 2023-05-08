@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FromsCreate</title>
+</head>
+<body>
+<h1>Froms Create</h1>
+<form th:action="@{/createEntity}" th:method="POST">
+    <table border="1">c
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td><input type="number" name="age"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="email"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="createEntity"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

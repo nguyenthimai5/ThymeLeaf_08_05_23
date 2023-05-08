@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Condition</title>
+</head>
+<body>
+<h1>Câu điều kiện</h1>
+<p>---------------------------------------------------------------------------------------------------------------------</p>
+<h2> IF...ESLE</h2>
+<div th:if="${variable}">
+    <img th:src="@{https://hamsterkingdom.com/wp-content/uploads/2017/07/Vang-Chanh-Mat-Den-90k-scaled.jpg}" height="70px">
+</div>
+<div th:unless="${variable}">
+    <img th:src="@{https://thumbs.dreamstime.com/b/false-stamp-false-grunge-vintage-stamp-isolated-white-background-false-sign-122417440.jpg}" height="70px">
+</div>
+<br/>
+<p>---------------------------------------------------------------------------------------------------------------------</p>
+
+<h2>SWITCH...CASE</h2>
+<div th:switch="${variable}">
+  <p th:case="*{thymeleafEntity.name}">Nguyễn Thị Ngọc Mai</p>
+  <p th:case="*">Không trùng với tên</p>
+</div>
+</body>
+</html>
