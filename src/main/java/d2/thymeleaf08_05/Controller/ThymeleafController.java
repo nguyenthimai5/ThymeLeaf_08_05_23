@@ -3,6 +3,7 @@ package d2.thymeleaf08_05.Controller;
 
 import d2.thymeleaf08_05.Model.ThymeleafEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ import java.util.List;
 public class ThymeleafController {
    private static List<ThymeleafEntity> list=new ArrayList<>();
    private static ThymeleafEntity thymeleafEntity=new ThymeleafEntity();
-    @GetMapping("/variable")
+    @GetMapping("/")
     public static ModelAndView thymeleafVariable(@RequestParam(value = "name",defaultValue = "Xin chào") String name){
         ModelAndView mav=new ModelAndView("views/Variable");
         mav.addObject("value",name);
@@ -27,9 +28,9 @@ public class ThymeleafController {
         return mav;
     }
 
-    @GetMapping("/navbar")
+    @GetMapping("/layout")
     public static ModelAndView navbars(){
-        ModelAndView mav=new ModelAndView("views/Navbar");
+        ModelAndView mav=new ModelAndView("views/Layout");
         return mav;
     }
     @GetMapping("/loop")
@@ -43,6 +44,7 @@ public class ThymeleafController {
     public static ModelAndView condition(@RequestParam( "variable") String variable){
         ModelAndView mav=new ModelAndView("views/Condition");
         mav.addObject("variable",variable);
+        mav.addObject("varUText","This is <b>great!</b>");
         mav.addObject("thymeleafEntity",thymeleafEntity);
         return mav;
     }
@@ -53,14 +55,19 @@ public class ThymeleafController {
         return mav;
     }
     @GetMapping("/fromsCreate")
-    public static String fromsCreate(){
+    public static String fromsCreate(Model model){
+        model.addAttribute("entity",new ThymeleafEntity());
         return "views/fromsCreate";
     }
     @PostMapping("/createEntity")
-    public static ModelAndView createEntity(@ModelAttribute ThymeleafEntity entity){
-     ModelAndView mav=new ModelAndView("views/Forms");
-     list.add(entity);
-     mav.addObject("list",list);
-     return mav;
+    public static String createEntity(@ModelAttribute ThymeleafEntity entity, Model model) {
+        if (entity.getAge()<10){
+            model.addAttribute("erro","<span style='color:red'>Nhập tuổi phải lớn hơn 10!</span>");
+            model.addAttribute("entity",new ThymeleafEntity());
+            return "views/fromsCreate";
+        }
+        list.add(entity);
+        model.addAttribute("list", list);
+        return "views/Forms";
     }
 }

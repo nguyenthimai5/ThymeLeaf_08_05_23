@@ -2,7 +2,8 @@ package d2.thymeleaf08_05.Model;
 
 public class ThymeleafEntity {
 // Đây cũng là một loại biến trong thymeleaf
-    private String name;
+
+    private String name="Mai";
     private int age;
     private String email;
 

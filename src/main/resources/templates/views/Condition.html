@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Condition</title>
+    <th:block th:replace="views/Navbar.html::css"></th:block>
 </head>
 <body>
+<th:block th:replace=" views/Navbar.html :: navbar">
+</th:block><br/>
+
 <h1>Câu điều kiện</h1>
 <p>---------------------------------------------------------------------------------------------------------------------</p>
 <h2> IF...ESLE</h2>
@@ -17,10 +21,25 @@
 <br/>
 <p>---------------------------------------------------------------------------------------------------------------------</p>
 
-<h2>SWITCH...CASE</h2>
+<h2 th:class="switch">SWITCH...CASE</h2>
 <div th:switch="${variable}">
   <p th:case="*{thymeleafEntity.name}">Nguyễn Thị Ngọc Mai</p>
   <p th:case="*">Không trùng với tên</p>
+
+<p>---------------------------------------------------------------------------------------------------------------------</p>
+<h2> Inlinning Javascrips</h2><br/>
+
+<p>Inlinning th:text:  [[${variable}]]</p>
+<p>Inlinning th:utext: [(${varUText})]</p>
+<script th:inline="javascript">
+    document.write([[${variable}]])
+</script>
+
+<style th:inline="css">
+.switch{
+    text-align: [[${variable}]];
+}
+</style>
 </div>
 </body>
 </html>

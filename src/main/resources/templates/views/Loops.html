@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Loop</title>
+    <th:block th:replace="views/Navbar.html::css"></th:block>
 </head>
 <body>
+<th:block th:replace="views/Navbar.html::navbar"></th:block><br/>
+
 
 <h2>Demo Foreach </h2><br/>
 <p>---------------------------------------------------------------------------------------------------------------------</p>
@@ -15,7 +18,7 @@
 
 <p>---------------------------------------------------------------------------------------------------------------------</p>
 <h3>Danh sách loài hoa đi kèm trạng thái: </h3>
-<table border="1">
+<table border="1" >
     <tr>
         <th>index</th>
         <th>count</th>
@@ -37,6 +40,5 @@
         <td th:text="${flower}"> </td>
     </tr>
 </table>
-
 </body>
 </html>

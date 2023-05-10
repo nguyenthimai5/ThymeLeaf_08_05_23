@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Layout</title>
+  <th:block th:replace="views/Navbar.html::css"></th:block>
+    <style>
+        .chenVari{
+            color:red;
+        }
+        .thayVari{
+            color: aqua;
+        }
+    </style>
+</head>
+<body>
+<th:block th:replace="views/Navbar.html::navbar"></th:block>
+<br/>
+
+<h1>Layout</h1><br/>
+
+<p th:fragment="fra"> Fragement</p>
+
+<h3>Các cách import fragment</h3>
+<p>-------------------------------------------------------------------------------------------</p>
+<h4>Import từ 1 trang khác tới</h4><br/>
+
+<div th:insert="~{views/Navbar.html::chen }" th:class="chenVari"><p>Đoạn chèn</p></div>
+<div th:replace="~{views/Navbar.html::thay}" th:class="thayVari"><p>Đoạn thay thế</p></div><br/>
+
+<p>----------------------------------------------------------------------------------------</p>
+
+<h4>Import cùng trang </h4><br/>
+
+<p th:insert="~{::fra}"></p>
+<p th:replace="~{this :: fra}"></p><br/>
+
+<p>----------------------------------------------------------------------------------------</p>
+<h4> Import toàn bộ th:fragment có cùng tên</h4>
+<!--<p th:replace="~{thay}"></p>-->
+</body>
+</html>

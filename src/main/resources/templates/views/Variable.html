@@ -3,44 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Variable</title>
+    <th:block th:replace="views/Navbar.html::css"></th:block>
 </head>
 
 <body>
+<th:block th:replace="views/Navbar.html::navbar"></th:block><br/>
 <h1>ThymeleafVariable Demo</h1>
 <p>---------------------------------------------------------------------------------------------------------------------</p>
 
-<h2>Biến</h2>
-<h3>Biến: <span th:text="${value}" ></span></h3>
+<h3>Biến</h3>
+<h4>Biến: <span th:text="${value}" ></span></h4>
 
-<h3>Biến cục bộ</h3>
+<h4>Biến cục bộ</h4>
 <div th:with="flower=${localVariable}">
   <p >Biến trong div: <span th:text="${flower}"></span></p>
 </div><br/>
 
 <p>---------------------------------------------------------------------------------------------------------------------</p>
-<h2>Biểu thức biến: </h2>
-<h3>- Biểu thức biến <span th:text="${variable}"></span></h3>
-<h3>- Biểu thức biến trong properties <span th:text="#{welcome.text}"></span></h3>
-<h3>- Biểu thức truy cập giá trị của đối tượng <span th:text="*{thymeleafEntity.name+' '+thymeleafEntity.age+' tuổi'}"></span></h3>
-<h3>- Biểu thức url <a th:href="@{/navbar}">NavbarPage</a></h3><br/>
+<h3>Biểu thức biến: </h3>
+<p>- Biểu thức biến <span th:text="${variable}"></span></p>
+<p>- Biểu thức biến trong properties <span th:text="#{welcome.text}"></span></p>
+<p>- Biểu thức truy cập giá trị của đối tượng <span th:text="*{thymeleafEntity.name+' '+thymeleafEntity.age+' tuổi'}"></span></p>
+<p>- Biểu thức url <a th:href="@{/navbar}">NavbarPage</a></p><br/>
 
 
 <p>----------------------------------------------------------------------------------------------------------------------</p>
 
-<h2>Thao tác với văn bản: </h2>
-<h3>- Nối chuỗi </h3>
+<h3>Thao tác với văn bản: </h3>
+<h4>- Nối chuỗi </h4>
 <p><span th:text="${value+' '+localVariable}"></span></p>
-<h3>- Thay thế bằng chữ </h3>
+<h4>- Thay thế bằng chữ </h4>
 <p><span th:text="|Tuổi của tôi là *{thymeleafEntity.age}|" ></span></p>
 <br/>
 
 <p>---------------------------------------------------------------------------------------------------------------------</p>
-<h2>Các phép tính toán học:</h2>
-<h3>- Toán tử nhị phân :</h3>
+<h3>Các phép tính toán học:</h3>
+<h4>- Toán tử nhị phân :</h4>
 <p>    + Cộng: <span>2 + 4 = [[2 + 4]]</span></p>
 <p>    + Trừ: <span>4-2 = [[4-2]]</span></p>
 <p>    + Nhân:<span> 2 * 4 = [[2 * 4]]</span></p>
 <p>    + Chia:<span> 9/3 = [[9/3]]</span></p>
 <p>    + Phép chia lấy phần dư :<span> 4%2 = [[4%2]]</span></p>
+
+<p>--------------------------------------------------------------------------------------------------------</p>
+
+
 </body>
 </html>

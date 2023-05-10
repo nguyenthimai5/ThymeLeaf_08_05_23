@@ -1,27 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>FromsCreate</title>
+<style>
+    .err{
+        color: red;
+    }
+    td{
+        width: 300px;
+    }
+</style>
+    <th:block th:replace="views/Navbar.html::css"></th:block>
 </head>
 <body>
+<th:block th:replace="views/Navbar.html::navbar">
+</th:block><br/>
+
 <h1>Froms Create</h1>
-<form th:action="@{/createEntity}" th:method="POST">
-    <table border="1">c
+<form action="/Forms.html" th:attr="action=@{/createEntity}" th:object="${entity}" th:method="POST">
+    <table border="1">
         <tr>
             <td>Name</td>
-            <td><input type="text" name="name"></td>
+            <td><input type="text" th:field="*{name}">
+            </td>
+
         </tr>
         <tr>
             <td>Age</td>
-            <td><input type="number" name="age"></td>
+            <td><input type="number" th:field="*{age}">
+                <h6 style="text-align: justify" >[(${erro})]</h6>
+            </td>
+
         </tr>
         <tr>
             <td>Email</td>
-            <td><input type="email" name="email"></td>
+            <td><input type="email" th:field="*{email}"></td>
         </tr>
         <tr>
-            <td><input type="submit" name="createEntity"></td>
+            <td colspan="2"><input type="submit" value="CREATE" th:class="submit" style="width: 800px; background-color: #d0e4f6" ></td>
+
         </tr>
     </table>
 </form>
